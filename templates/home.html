@@ -33,7 +33,7 @@
                             {{ task.task}}
                             <span style="position: relative; float: right;">
                                 <a href="{% url 'mark_as_done' task.pk %}" class="btn btn-success"><i class="fa fa-check"></i> Mark as Done</a>
-                                <a class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                <a href="{% url 'delete_task' task.pk %}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                 <a href="{% url 'edit_task' task.pk %}" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
                             </span>
                         </div>
@@ -50,9 +50,12 @@
                             {{ task.task }}
 
                         </div>
-                        <a href="{% url 'mark_as_undone' task.pk %}" class="btn btn-dark"><i class="fa fa-exchange"></i> Mark as Not Done</a>
-
+                        <span style="display: flex; justify-content:flex-start;">
+                            <a style="margin-right: 5px;" href="{% url 'mark_as_undone' task.pk %}" class="btn btn-dark"><i class="fa fa-exchange"></i> Mark as Not Done</a>
+                            <a href="{% url 'delete_task' task.pk %}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                        </span>
                     </div>
+
                 {% endfor %}
             </div>
         </div>
