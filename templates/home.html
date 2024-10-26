@@ -33,7 +33,8 @@
                     {% for task in tasks %}
                         <div class="card m-1">
                             <div class="card-body">
-                                {{ task.task}}
+                                {{ task.task }}<br>
+                                <small class="text-muted">Created: {{ task.created_at|date:"jS F Y, H:i" }}</small>
                                 <span style="position: relative; float: right;">
                                     <a href="{% url 'mark_as_done' task.pk %}" class="btn btn-success"><i class="fa fa-check"></i> Mark as Done</a>
                                     <a href="{% url 'delete_task' task.pk %}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
@@ -47,17 +48,17 @@
                 {% endif %}
             </div>
 
-            <div style="border: 1px solid #000; border-radius: 8px;" class="bg-dark-subtle col-md-5 col-lg-5">
+            <div class="bg-light col-md-5 col-lg-5" style="border-radius: 8px; border: 1px solid #000; height: 450px; overflow: scroll;">
                 <h5 class="text-center">Completed Tasks</h5>
             
                 {% if completed_tasks %}
-                    <!-- List of all the tasks that have completed -->
                     {% for task in completed_tasks %}
                         <div class="card m-1">
                             <div class="card-body">
-                                {{ task.task }}
+                                {{ task.task }}<br>
+                                <small class="text-muted">Completed: {{ task.completed_at|date:"jS F Y, H:i" }}</small>
                             </div>
-                            <span style="display: flex; justify-content:flex-start;">
+                            <span style="display: flex; justify-content: flex-start; margin: 10px;">
                                 <a style="margin-right: 5px;" href="{% url 'mark_as_undone' task.pk %}" class="btn btn-dark"><i class="fa fa-exchange"></i> Mark as Not Done</a>
                                 <a href="{% url 'delete_task' task.pk %}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                             </span>
@@ -67,6 +68,8 @@
                     <p>No completed tasks available.</p>
                 {% endif %}
             </div>
+            
+            
             
         </div>
         <div class="row">
